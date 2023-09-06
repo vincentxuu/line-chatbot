@@ -44,6 +44,6 @@ bot.on("message", function (event) {
 app.post("/", linebotParser);
 
 // 啟動express server
-app.listen(process.env.PORT || 3000, () => {
-  console.log("Express server start");
+app.listen(process.env.PORT || 5000, () => {
+  console.log(`Express server start in port ${process.env.PORT || 5000}`);
 });
