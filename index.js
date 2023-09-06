@@ -27,12 +27,7 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use('/api', apiRouter);
-app.get('/', (req, res) => {
-  res.send({
-      title: 'My Friends love outdoor ',
-      caption: 'Let\'s go surfing',
-  });
-});
+
 
 // register a webhook handler with middleware
 // about the middleware, please refer to doc
