@@ -2,7 +2,11 @@
 
 const line = require('@line/bot-sdk');
 const express = require('express');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+
 require('dotenv').config();
+const apiRouter = require('./routes/api');
 
 
 // create LINE SDK config from env variables
@@ -17,10 +21,23 @@ const client = new line.Client(config);
 // create Express app
 // about Express itself: https://expressjs.com/
 const app = express();
+app.use(express.json());
+app.use(express.urlencoded({extended: false}));
+app.use(cookieParser());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+app.use('/api', apiRouter);
+app.get('/', (req, res) => {
+  res.send({
+      title: 'My Friends love outdoor ',
+      caption: 'Let\'s go surfing',
+  });
+});
 
 // register a webhook handler with middleware
 // about the middleware, please refer to doc
 app.post('/callback', line.middleware(config), (req, res) => {
+  console.log('callback-req.body:',req.body);
   Promise
     .all(req.body.events.map(handleEvent))
     .then((result) => res.json(result))
@@ -41,10 +58,13 @@ function handleEvent(event) {
 
   // create a echoing text message
   const echo = { type: 'text', text: event.message.text };
+  console.log('handleEvent-event:',event)
 
   // use reply API
   return client.replyMessage(event.replyToken, echo);
 }
+
+
 
 // listen on port
 const port = process.env.PORT || 3000;
