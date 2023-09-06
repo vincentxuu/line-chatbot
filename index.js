@@ -30,6 +30,8 @@ app.post('/callback', line.middleware(config), (req, res) => {
     });
 });
 
+
+
 // event handler
 function handleEvent(event) {
   if (event.type !== 'message' || event.message.type !== 'text') {
