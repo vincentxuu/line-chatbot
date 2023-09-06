@@ -21,9 +21,9 @@ const client = new line.Client(config);
 // create Express app
 // about Express itself: https://expressjs.com/
 const app = express();
-app.use(express.json());
-app.use(express.urlencoded({extended: false}));
-app.use(cookieParser());
+// app.use(express.json());
+// app.use(express.urlencoded({extended: false}));
+// app.use(cookieParser());
 // app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({extended: true}));
 app.use('/api', apiRouter);
