@@ -23,6 +23,5 @@ const getReply = async function (text){
     });
 }
 
-getReply()
 
 module.exports = getReply
