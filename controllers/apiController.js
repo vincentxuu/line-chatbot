@@ -161,6 +161,21 @@ class ApiController {
       return res.status(500).json(err);
     }
   }
+  async getWatsonResult(req, res) {
+    const body = {
+      text: req.body.text,
+    };
+    const urlData = {
+      url: `${WATSON_URL}/assistant/conversation`,
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+      },
+      data: body,
+    };
+    console.log('[watsonUrlData]', urlData);
+    return await Utils.callAPI(urlData);
+  }
 }
 
 /**
@@ -169,21 +184,6 @@ class ApiController {
   * @param {object} params
   * @return {Promise<string>}
   */
-async function getWatsonResult(params) {
-  const body = {
-    text: params.text,
-  };
-  const urlData = {
-    url: `${WATSON_URL}/assistant/conversation`,
-    method: 'POST',
-    headers: {
-      'content-type': 'application/json',
-    },
-    data: body,
-  };
-  console.log('[watsonUrlData]', urlData);
-  return await Utils.callAPI(urlData);
-}
 
 /**
   * 取得ansId的內容
