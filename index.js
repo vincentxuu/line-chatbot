@@ -8,6 +8,8 @@ const bodyParser = require('body-parser');
 require('dotenv').config();
 const apiRouter = require('./routes/api');
 const Utils = require('./controllers/Utils');
+const ApiController = require('./controllers/apiController');
+
 
 
 // create LINE SDK config from env variables
@@ -55,7 +57,8 @@ async function handleEvent(event) {
   // create a echoing text message
   const echo = { type: 'text', text: event.message.text };
   console.log('handleEvent-event:',event)
-  let res = await Utils.callAPI('/sendMessage', 'POST', { text: event.message.text });
+  let text = event.message.text
+  let res = ApiController.getWatsonResult(text);
   console.log('handleEvent-res:',res)
   let result = { type: 'text', text: res };
   console.log('handleEvent-result:',result)

@@ -161,9 +161,9 @@ class ApiController {
       return res.status(500).json(err);
     }
   }
-  async getWatsonResult(req, res) {
+  async getWatsonResult(text) {
     const body = {
-      text: req.body.text,
+      text
     };
     const urlData = {
       url: `${WATSON_URL}/assistant/conversation`,
