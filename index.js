@@ -8,7 +8,7 @@ const bodyParser = require('body-parser');
 require('dotenv').config();
 const apiRouter = require('./routes/api');
 const Utils = require('./controllers/Utils');
-const ApiController = require('./controllers/apiController');
+const getReply = require('./controllers/watsonController');
 
 
 
@@ -58,9 +58,9 @@ async function handleEvent(event) {
   const echo = { type: 'text', text: event.message.text };
   console.log('handleEvent-event:',event)
   let text = event.message.text
-  let res = await ApiController.getWatsonResult(text);
-  console.log('handleEvent-res:',res)
-  let result = { type: 'text', text: res };
+  let res = await getReply(text);
+  console.log('handleEvent-res:',res[0])
+  let result = { type: 'text', text: res[0] };
   console.log('handleEvent-result:',result)
 
   // use reply API
