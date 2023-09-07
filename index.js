@@ -59,8 +59,8 @@ async function handleEvent(event) {
   console.log('handleEvent-event:',event)
   let text = event.message.text
   let res = await getReply(text);
-  console.log('handleEvent-res:',res[0])
-  let result = { type: 'text', text: res[0] };
+  console.log('handleEvent-res:',res)
+  let result = { type: 'text', text: res };
   console.log('handleEvent-result:',result)
 
   // use reply API
