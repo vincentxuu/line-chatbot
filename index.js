@@ -61,6 +61,7 @@ async function handleEvent(event) {
 
   console.log('handleEvent-text:',text)
   let res = await getReply(text);
+  
   console.log('handleEvent-res:',res)
   let result = { type: 'text', text: res };
   console.log('handleEvent-result:',result)

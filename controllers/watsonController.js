@@ -14,12 +14,16 @@ const getReply = async function (text){
   res = await assistant.message({
     workspaceId: 'e5f2d935-02b9-4fd2-a801-eab8a3d45941',
     input: text
-    });}
-    catch(err){
+    });
+  }catch(err){
       console.log(err);
     }
-    console.log(res.result.output.text);
-      return res.result.output.text;
+
+  if(res.result.output.text[0]){ 
+  console.log(res.result.output.text);
+  return res.result.output.text[0];
+  }
+
 }
 
 module.exports = getReply
