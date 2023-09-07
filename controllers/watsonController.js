@@ -18,8 +18,8 @@ const getReply = async function (text){
     catch(err){
       console.log(err);
     }
-    console.log(res.result.output.text[0]);
-      return res.result.output.text[0];
+    console.log(res.result.output.text);
+      return res.result.output.text;
 }
 
 module.exports = getReply
