@@ -9,20 +9,20 @@ const getReply = async function (text){
     }),
     serviceUrl: 'https://api.au-syd.assistant.watson.cloud.ibm.com',
   });
-  
-  
+
   assistant.message({
     workspaceId: 'e5f2d935-02b9-4fd2-a801-eab8a3d45941',
     input: text
     })
     .then(res => {
-      console.log(JSON.stringify(res.result.output, null, 2));
-      return JSON.stringify(res.result.output, null, 2)
+      console.log(res.result.output.text[0]);
+      return res.result.output.text[0]
     })
     .catch(err => {
       console.log(err)
     });
 }
 
+getReply()
 
 module.exports = getReply
