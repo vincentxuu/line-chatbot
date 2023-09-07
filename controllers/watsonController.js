@@ -9,7 +9,7 @@ const getReply = async function (text){
     }),
     serviceUrl: 'https://api.au-syd.assistant.watson.cloud.ibm.com',
   });
-
+  console.log('getReply',text)
   assistant.message({
     workspaceId: 'e5f2d935-02b9-4fd2-a801-eab8a3d45941',
     input: text
