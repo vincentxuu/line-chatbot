@@ -15,6 +15,7 @@ class ApiController {
   constructor() {
     this.sendMessage = this.sendMessage.bind(this);
     this.getAnsIdMessage = this.getAnsIdMessage.bind(this);
+    this.getWatsonResult = this.getWatsonResult.bind(this);
   }
 
   /**
