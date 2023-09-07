@@ -2,6 +2,7 @@ const AssistantV1 = require('ibm-watson/assistant/v1');
 const { IamAuthenticator } = require('ibm-watson/auth');
 
 const getReply = async function (text){
+  let res
   const assistant = new AssistantV1({
     version: '2021-06-14',
     authenticator: new IamAuthenticator({
@@ -9,19 +10,16 @@ const getReply = async function (text){
     }),
     serviceUrl: 'https://api.au-syd.assistant.watson.cloud.ibm.com',
   });
-  console.log('getReply',text)
-  assistant.message({
+  try{
+  res = await assistant.message({
     workspaceId: 'e5f2d935-02b9-4fd2-a801-eab8a3d45941',
     input: text
-    })
-    .then(res => {
-      console.log(res.result.output.text[0]);
-      return res.result.output.text[0]
-    })
-    .catch(err => {
-      console.log(err)
-    });
+    });}
+    catch(err){
+      console.log(err);
+    }
+    console.log(res.result.output.text[0]);
+      return res.result.output.text[0];
 }
-
 
 module.exports = getReply
