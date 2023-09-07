@@ -58,7 +58,7 @@ async function handleEvent(event) {
   const echo = { type: 'text', text: event.message.text };
   console.log('handleEvent-event:',event)
   let text = event.message.text
-  let res = ApiController.getWatsonResult(text);
+  let res = await ApiController.getWatsonResult(text);
   console.log('handleEvent-res:',res)
   let result = { type: 'text', text: res };
   console.log('handleEvent-result:',result)
