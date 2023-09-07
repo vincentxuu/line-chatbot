@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 
 require('dotenv').config();
 const apiRouter = require('./routes/api');
-const callAPI = require('./utils/callAPI');
+const callAPI = require('./controllers/Utils');
 
 
 // create LINE SDK config from env variables
