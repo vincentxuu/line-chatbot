@@ -3,6 +3,6 @@ const router = express.Router();
 
 const ApiController = require('../controllers/apiController');
 
-router.post('/sendMessage', ApiController.sendMessage);
+router.post('/sendMessage', ApiController.getWatsonResult);
 
 module.exports = router;

@@ -171,14 +171,12 @@ class ApiController {
 async function getWatsonResult(params) {
   const body = {
     text: params.text,
-    platform: params.platform,
   };
   const urlData = {
     url: `${WATSON_URL}/assistant/conversation`,
     method: 'POST',
     headers: {
       'content-type': 'application/json',
-      'Authorization': `Bearer ${params.token}`,
     },
     data: body,
   };

@@ -55,7 +55,7 @@ async function handleEvent(event) {
   // create a echoing text message
   const echo = { type: 'text', text: event.message.text };
   console.log('handleEvent-event:',event)
-  let res = await Utils.callAPI('https://line-chatbot-hwkc.onrender.com//sendMessage', 'POST', { text: event.message.text });
+  let res = await Utils.callAPI('https://line-chatbot-hwkc.onrender.com/sendMessage', 'POST', { text: event.message.text });
   console.log('handleEvent-res:',res)
   let result = { type: 'text', text: res };
   console.log('handleEvent-result:',result)
