@@ -45,7 +45,7 @@ app.post('/callback', line.middleware(config), (req, res) => {
 
 
 // event handler
-function handleEvent(event) {
+async function handleEvent(event) {
   if (event.type !== 'message' || event.message.type !== 'text') {
     // ignore non-text-message event
     return Promise.resolve(null);
@@ -54,9 +54,13 @@ function handleEvent(event) {
   // create a echoing text message
   const echo = { type: 'text', text: event.message.text };
   console.log('handleEvent-event:',event)
+  let res = await callAPI('/sendMessage', 'POST', { text: event.message.text });
+  console.log('handleEvent-res:',res)
+  let result = { type: 'text', text: res };
+  console.log('handleEvent-result:',result)
 
   // use reply API
-  return client.replyMessage(event.replyToken, echo);
+  return client.replyMessage(event.replyToken,result);
 }
 
 
