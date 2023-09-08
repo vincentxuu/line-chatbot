@@ -18,7 +18,7 @@ const getReply = async function (text){
   }catch(err){
       console.log(err);
     }
-
+  console.log('getReply-res',res);
   if(res.result.output.text[0]){ 
   console.log(res.result.output.text);
   return res.result.output.text[0];
