@@ -27,7 +27,7 @@ const getReply = async function (text){
   console.log('getReply-res.result.context',res.result.context);
 
 
-  if(res?.status === 200){ 
+  if(res.result.output.text[0]){ 
     this.conversationContext = res?.result?.context;
     console.log(res.result.output.text);
     return res.result.output.text[0];
