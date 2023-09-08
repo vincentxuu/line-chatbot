@@ -19,6 +19,13 @@ const getReply = async function (text){
       console.log(err);
     }
   console.log('getReply-res',res);
+  console.log('getReply-.result.output',res.result.output);
+  console.log('getReply-.result.output.generic',res.result.output.generic);
+  console.log('getReply-.result.output.text',res.result.output.text);
+
+  console.log('getReply-res.result.context',res.result.context);
+
+
   if(res.result.output.text[0]){ 
   console.log(res.result.output.text);
   return res.result.output.text[0];
